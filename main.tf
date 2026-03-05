@@ -81,7 +81,7 @@ resource "aws_route_table" "private" {
   )
 }
 
-resource "aws_route_table" "databse" {
+resource "aws_route_table" "database" {
   vpc_id = aws_vpc.main.id
   tags = merge (
     local.common_tags,
