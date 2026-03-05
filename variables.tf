@@ -60,7 +60,7 @@ variable "private_route_table_tags" {
     type = map
     default= {}
 }
-variable "databse_route_table_tags" {
+variable "database_route_table_tags" {
     type = map
     default= {}
 }
