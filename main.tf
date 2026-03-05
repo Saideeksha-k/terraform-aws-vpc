@@ -146,7 +146,7 @@ resource "aws_route_table_association" "private" {
 }
 
 resource "aws_route_table_association" "databse" {
-  count=length(var.databse_subnet_cidrs)
-  subnet_id      = aws_subnet.databse[count.index].id
-  route_table_id = aws_route_table.databse.id
+  count=length(var.database_subnet_cidrs)
+  subnet_id      = aws_subnet.database[count.index].id
+  route_table_id = aws_route_table.database.id
 }
