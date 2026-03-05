@@ -11,3 +11,19 @@ resource "aws_internet_gateway" "gw" {
 
   tags =local.igw_final_tags
 }
+
+resource "aws_subnet" "public" {
+  count = length(var.public_subnet_cidrs)
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = var.public_subnet_cidrs
+  availability_zone = local.az_names[count.index] # Replace with a valid AZ
+
+  tags = merge (
+    local.common_tags,
+    {
+      Name = "${var.project}-${var.environment}-public-${local.az_names[count.index]}"
+    },
+    var.public_subnet_tags
+  )
+  
+}
